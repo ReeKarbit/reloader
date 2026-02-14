@@ -1,0 +1,16 @@
+{
+    "rewrites": [
+        {
+            "source": "/api.php",
+            "destination": "/api/index"
+        },
+        {
+            "source": "/download.php",
+            "destination": "/api/download"
+        },
+        {
+            "source": "/filesize.php",
+            "destination": "/api/filesize"
+        }
+    ]
+}

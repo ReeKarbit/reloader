@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Pengguna - MediaDownloader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=2">
+    <style>
+        /* === GUIDE PAGE SPECIFIC STYLES === */
+
+        .guide-topbar {
+            background: var(--black);
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--lime);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .guide-topbar-left {
+            font-weight: 900;
+            font-size: 0.85rem;
+            color: var(--lime);
+            font-family: var(--font-heading);
+        }
+
+        .guide-topbar-right a {
+            background: var(--lime);
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 0.7rem;
+            padding: 6px 12px;
+            border: 2px solid var(--black);
+            box-shadow: 3px 3px 0px var(--black);
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        .guide-topbar-right a:hover {
+            transform: translate(1px, 1px);
+            box-shadow: 2px 2px 0px var(--black);
+        }
+
+        .guide-hero {
+            text-align: center;
+            padding: 40px 15px 30px;
+        }
+
+        .guide-hero h1 {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            color: var(--black);
+            margin-bottom: 8px;
+        }
+
+        .guide-hero p {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--purple);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Section Card */
+        .guide-section {
+            max-width: 420px;
+            margin: 0 auto 30px;
+            padding: 0 15px;
+        }
+
+        .section-card {
+            border: 3px solid var(--black);
+            box-shadow: 6px 6px 0px var(--black);
+            background: var(--white);
+        }
+
+        .section-header {
+            background: var(--black);
+            color: var(--white);
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--black);
+        }
+
+        .section-header h2 {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-header .section-badge {
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--lime);
+            font-family: var(--font-mono);
+        }
+
+        .section-header .section-icon {
+            color: var(--lime);
+            font-size: 1rem;
+        }
+
+        .section-body {
+            padding: 20px 16px;
+        }
+
+        /* Steps */
+        .step {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #ddd;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .step-number {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: #ccc;
+            flex-shrink: 0;
+            width: 40px;
+            text-align: center;
+            line-height: 1;
+            padding-top: 4px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.8rem;
+            background: var(--lime);
+            color: var(--black);
+            display: inline-block;
+            padding: 2px 8px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            border: 1px solid var(--black);
+        }
+
+        .step-desc {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .step-desc strong {
+            color: var(--black);
+        }
+
+        /* Platform Tags */
+        .platform-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .platform-grid h3 {
+            width: 100%;
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .platform-tag {
+            background: var(--white);
+            border: 2px solid var(--black);
+            padding: 8px 14px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            box-shadow: 3px 3px 0px var(--black);
+            flex: 1;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        /* FAQ / Diagnosa */
+        .faq-item {
+            border: 2px solid var(--black);
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-question {
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .faq-question .faq-toggle {
+            font-size: 1.2rem;
+            font-weight: 900;
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 16px 14px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.7rem;
+            color: #555;
+            line-height: 1.6;
+            border-top: 2px dashed #ccc;
+            margin-top: 0;
+            padding-top: 12px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* Section with purple header */
+        .section-header-purple {
+            background: var(--purple);
+            color: var(--white);
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--black);
+        }
+
+        .section-header-purple h2 {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-header-purple .section-icon {
+            color: var(--lime);
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        .guide-footer {
+            text-align: center;
+            padding: 30px 15px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Bar -->
+    <div class="guide-topbar">
+        <div class="guide-topbar-left">/// BACA!!</div>
+        <div class="guide-topbar-right">
+            <a href="index.html">&lt;&lt; KEMBALI KE SISTEM</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="guide-hero">
+        <h1>Manual Pengguna</h1>
+        <p>Arsip Dokumentasi & Protokol Penggunaan</p>
+    </div>
+
+    <!-- Section 01: Protokol Eksekusi -->
+    <div class="guide-section">
+        <div class="section-card">
+            <div class="section-header-purple">
+                <h2>01 // PROTOKOL EKSEKUSI</h2>
+                <span class="section-icon"><i class="fas fa-terminal"></i></span>
+            </div>
+            <div class="section-body">
+
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <div class="step-title">AKUISISI TAUTAN (COPY LINK)</div>
+                        <div class="step-desc">
+                            Buka aplikasi target (TikTok, Instagram, YouTube, dll). Cari tombol
+                            <strong>"Share/Bagikan"</strong> lalu pilih opsi <strong>"Salin Tautan"</strong>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <div class="step-title">INJEKSI DATA (PASTE)</div>
+                        <div class="step-desc">
+                            Kembali ke sistem MEDIA DOWNLOADER. Tempelkan tautan ke dalam kotak input bertanda
+                            <strong>"TARGET URL"</strong>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <div class="step-title">INISIASI PROSES</div>
+                        <div class="step-desc">
+                            Tekan tombol berwarna Hijau Stabilo <strong>"INITIATE DOWNLOAD"</strong>. Sistem akan
+                            menindai server target.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <div class="step-title">PENGAMBILAN FILE</div>
+                        <div class="step-desc">
+                            Kartu hasil akan muncul. Klik <strong>"DOWNLOAD NOW"</strong> untuk menyimpan file ke
+                            penyimpanan lokal perangkat Anda.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 02: Database Platform -->
+    <div class="guide-section">
+        <div class="section-card">
+            <div class="section-header">
+                <h2>02 // DATABASE PLATFORM</h2>
+                <span class="section-badge">STATUS: CONNECTED</span>
+            </div>
+            <div class="section-body">
+                <div class="platform-grid">
+                    <h3>Sistem Mendukung Ekstraksi Dari:</h3>
+                    <div class="platform-tag">TikTok (No WM)</div>
+                    <div class="platform-tag">Instagram (Reels/Story)</div>
+                    <div class="platform-tag">Facebook Video</div>
+                    <div class="platform-tag">YouTube (MP3/MP4)</div>
+                    <div class="platform-tag">Twitter / X</div>
+                    <div class="platform-tag">Threads</div>
+                    <div class="platform-tag">Pinterest</div>
+                    <div class="platform-tag">SoundCloud</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 03: Diagnosa Masalah -->
+    <div class="guide-section">
+        <div class="section-card">
+            <div class="section-header-purple">
+                <h2>03 // DIAGNOSA MASALAH</h2>
+                <span class="section-icon"><i class="fas fa-exclamation-triangle"></i></span>
+            </div>
+            <div class="section-body" style="padding: 16px;">
+
+                <div class="faq-item" onclick="this.classList.toggle('active')">
+                    <div class="faq-question">
+                        <span>ERROR: MEDIA TIDAK DITEMUKAN?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Pastikan link yang Anda salin valid dan berasal dari platform yang didukung. Beberapa akun
+                        privat tidak bisa diakses oleh sistem. Coba paste ulang link-nya dan pastikan tidak ada spasi
+                        atau karakter aneh.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="this.classList.toggle('active')">
+                    <div class="faq-question">
+                        <span>DOWNLOAD GAGAL DI TENGAH JALAN?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Kemungkinan koneksi internet Anda terputus atau server sedang sibuk. Tunggu beberapa detik lalu
+                        coba lagi. Jika masih gagal, coba gunakan jaringan lain (WiFi / Data Seluler).
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="this.classList.toggle('active')">
+                    <div class="faq-question">
+                        <span>HASIL VIDEO TIKTOK MASIH ADA WATERMARK?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Sistem secara otomatis mengambil versi tanpa watermark (No WM). Jika masih ada watermark,
+                        kemungkinan server upstream sedang bermasalah. Coba lagi dalam beberapa menit.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="this.classList.toggle('active')">
+                    <div class="faq-question">
+                        <span>YOUTUBE HANYA TERSEDIA 360P?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Video YouTube berkualitas tinggi (720p/1080p) memerlukan proses merging audio dan video secara
+                        terpisah. Saat ini sistem menampilkan kualitas tertinggi yang sudah mencakup audio. Kami terus
+                        berupaya meningkatkan kualitas download.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="this.classList.toggle('active')">
+                    <div class="faq-question">
+                        <span>APAKAH DATA SAYA AMAN?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Ya! Sistem ini tidak menyimpan data apapun. Semua proses download berjalan secara langsung tanpa
+                        logging. Link yang Anda masukkan hanya digunakan untuk proses extraksi dan tidak disimpan di
+                        server.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 04: Info Sistem -->
+    <div class="guide-section">
+        <div class="section-card">
+            <div class="section-header">
+                <h2>04 // INFO SISTEM</h2>
+                <span class="section-badge">V.3.0 ULTRA</span>
+            </div>
+            <div class="section-body" style="text-align: center;">
+                <p
+                    style="font-family: var(--font-mono); font-weight: 700; font-size: 0.75rem; color: #666; text-transform: uppercase; line-height: 1.8;">
+                    ENGINE: MEDIA DOWNLOADER V3<br>
+                    AUTHOR: REHAN<br>
+                    STATUS: OPERATIONAL<br>
+                    UPTIME: 99.9%
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="guide-footer">
+        /// END OF DOCUMENTATION /// <br>
+        MEDIA DOWNLOADER &copy; 2026 — REHAN
+    </div>
+
+</body>
+
+</html>

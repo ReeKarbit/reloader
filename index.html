@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediaDownloader - REHAN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+
+<body>
+
+    <!-- Moving Ticker -->
+    <div class="top-ticker">
+        <div class="ticker-content">
+            V.3.0 ULTRA • NO WATERMARK • FAST SPEED • SECURITY • V.3.0 ULTRA • NO WATERMARK • FAST SPEED • SECURITY •
+            V.3.0 ULTRA • NO WATERMARK • FAST SPEED • SECURITY • V.3.0 ULTRA • NO WATERMARK • FAST SPEED • SECURITY
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-inner">
+            <a href="#" class="logo">MediaDownloader</a>
+            <a href="guide.html" class="nav-btn">BACA YA INI</a>
+        </div>
+    </nav>
+
+    <!-- Main Section -->
+    <main class="downloader-section">
+        <div class="container">
+
+            <!-- Main Card -->
+            <div class="main-card">
+                <!-- Card Header -->
+                <div class="card-header">
+                    <div class="header-avatar">
+                        <!-- Standardized Avatar matching reference style (Lime BG) -->
+                        <img src="memeg_pp.jpg" alt="Admin" width="70" height="70" loading="lazy">
+                    </div>
+                    <div class="header-text">
+                        <div class="header-role">ADMINISTRATOR</div>
+                        <div class="header-title">PASTE YOUR LINK <br> BELOW</div>
+                    </div>
+                    <!-- Decorative Stripes -->
+                    <div class="header-stripe">///</div>
+                </div>
+
+                <!-- Card Body -->
+                <div class="card-body">
+                    <label for="urlInput" class="input-label">TARGET URL:</label>
+
+                    <div class="input-wrapper">
+                        <input type="url" id="urlInput" autocomplete="off">
+                    </div>
+
+                    <!-- Platform Tags -->
+                    <div class="platform-tokens">
+                        <div class="token">#TIKTOK</div>
+                        <div class="token">#IG</div>
+                        <div class="token">#YT</div>
+                        <div class="token">#FB</div>
+                        <div class="token">#X</div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <button id="downloadBtn" class="download-btn">
+                        INITIATE DOWNLOAD
+                    </button>
+
+                    <!-- Loading & Result Areas (Hidden by default) -->
+                    <div id="loadingState" class="loading-state hidden"
+                        style="margin-top: 20px; text-align: center; font-weight: 800; font-family: 'Courier Prime', monospace;">
+                        <p>PROCESSING REQUEST... <i class="fas fa-spinner fa-spin"></i></p>
+                    </div>
+
+                    <div id="resultArea" class="result-area hidden">
+                        <!-- Result content injected by JS -->
+                    </div>
+
+                    <div id="errorArea" class="hidden"
+                        style="margin-top: 20px; background: #FF5252; color:white; border: 3px solid black; padding: 10px; font-weight: bold; box-shadow: 4px 4px 0px black;">
+                        <p id="errorMessage">ERROR OCCURRED</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                POWERED BY <span class="footer-highlight">REHAN</span>
+                <div style="font-size: 0.65rem; margin-top: 5px; color: #666; font-weight: 400;">ENGINEERED FOR
+                    PERFORMANCE</div>
+            </footer>
+
+        </div>
+    </main>
+
+    <!-- Hidden elements for JS compatibility -->
+    <div id="pasteBtn" style="display:none;"></div>
+    <div id="clearBtn" style="display:none;"></div>
+    <div id="detectedPlatform" style="display:none;"></div>
+    <div id="platformName" style="display:none;"></div>
+    <!-- Format buttons hidden but selectable via JS if needed, or we default to auto -->
+    <div class="format-card active" data-format="video-hd" style="display:none;"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

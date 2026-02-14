@@ -1,0 +1,511 @@
+/* ========================================
+   MEDIA GRAB — FINAL REVISION (Exact Reference Match)
+   ======================================== */
+
+/* --- CSS Reset & Variables --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Exact Palette extracted from image */
+    --purple: #5B23FF;
+    /* Deep Purple Header */
+    --lime: #CCFF00;
+    /* High-Vis Lime */
+    --black: #000000;
+    /* Pure Black */
+    --white: #FFFFFF;
+    /* Pure White */
+    --bg-grid: #E5E5E5;
+    /* Light Grey for Grid BG */
+
+    /* Dimensions */
+    --border-w: 3px;
+
+    /* Fonts */
+    --font-heading: 'Outfit', sans-serif;
+    --font-mono: 'Courier Prime', monospace;
+}
+
+body {
+    font-family: var(--font-heading);
+    background-color: var(--white);
+    color: var(--black);
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    /* Subtle Grid Background exactly like reference */
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Floating Shapes (Green Circle & Purple Square in background) */
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    z-index: -1;
+    border: var(--border-w) solid var(--black);
+}
+
+/* Green Circle (Top Left) */
+body::before {
+    width: 150px;
+    height: 150px;
+    background: var(--lime);
+    border-radius: 50%;
+    top: 100px;
+    left: -50px;
+}
+
+/* Purple Diamond/Square (Bottom Right) */
+body::after {
+    width: 120px;
+    height: 120px;
+    background: #5B23FF;
+    bottom: 50px;
+    right: -40px;
+    transform: rotate(45deg);
+}
+
+
+/* --- Top Ticker --- */
+.top-ticker {
+    background: var(--black);
+    color: var(--white);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    border-bottom: 3px solid var(--lime);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ticker-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: ticker-scroll 20s linear infinite;
+}
+
+@keyframes ticker-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.container {
+    max-width: 420px;
+    /* Force Mobile Width for Desktop too, matches reference card feel */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background: var(--white);
+    border-bottom: var(--border-w) solid var(--black);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: var(--black);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.nav-btn {
+    background: var(--lime);
+    color: var(--black);
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 2px solid var(--black);
+    box-shadow: 3px 3px 0px var(--black);
+}
+
+.nav-btn:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0px var(--black);
+}
+
+
+/* --- Main Section --- */
+.downloader-section {
+    padding: 40px 0;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-card {
+    background: var(--white);
+    border: var(--border-w) solid var(--black);
+    box-shadow: 8px 8px 0px var(--black);
+    width: 100%;
+}
+
+/* --- Card Header --- */
+.card-header {
+    background: var(--purple);
+    padding: 20px;
+    border-bottom: var(--border-w) solid var(--black);
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    position: relative;
+}
+
+/* Cross marks in corners */
+.card-header::before,
+.card-header::after {
+    content: '+';
+    position: absolute;
+    color: var(--black);
+    font-weight: 900;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.card-header::before {
+    top: 4px;
+    left: 4px;
+}
+
+.card-header::after {
+    top: 4px;
+    right: 4px;
+}
+
+.header-avatar {
+    width: 60px;
+    height: 60px;
+    background: var(--lime);
+    border: 3px solid var(--black);
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 4px 4px 0px var(--lime);
+    /* Logo-like shadow from reference */
+}
+
+.header-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header-text {
+    flex: 1;
+    color: var(--white);
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-role {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--lime);
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+}
+
+.header-title {
+    font-size: 1.2rem;
+    font-weight: 900;
+    line-height: 1.1;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    color: var(--white);
+}
+
+.header-stripe {
+    color: rgba(255, 255, 255, 0.3);
+    font-style: italic;
+    font-weight: 900;
+    font-size: 1.5rem;
+    margin-left: auto;
+    align-self: center;
+}
+
+/* --- Card Body --- */
+.card-body {
+    padding: 24px;
+}
+
+.input-label {
+    display: block;
+    font-weight: 900;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+}
+
+.input-wrapper {
+    margin-bottom: 20px;
+}
+
+#urlInput {
+    width: 100%;
+    border: 3px solid var(--black);
+    padding: 14px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: #F5F5F5;
+    outline: none;
+    color: var(--black);
+}
+
+#urlInput:focus {
+    background: var(--white);
+}
+
+#urlInput::placeholder {
+    color: #999;
+}
+
+/* Tags */
+.platform-tokens {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.token {
+    background: var(--white);
+    border: 2px solid var(--black);
+    padding: 5px 10px;
+    font-weight: 800;
+    font-size: 0.75rem;
+    box-shadow: 3px 3px 0px var(--black);
+    cursor: default;
+}
+
+/* Button */
+.download-btn {
+    width: 100%;
+    background: var(--lime);
+    color: var(--black);
+    border: 3px solid var(--black);
+    padding: 16px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    box-shadow: 6px 6px 0px var(--black);
+    /* Specific hard shadow */
+    cursor: pointer;
+    font-family: var(--font-heading);
+    position: relative;
+}
+
+.download-btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 4px 4px 0px var(--black);
+}
+
+.download-btn:active {
+    transform: translate(6px, 6px);
+    box-shadow: 0px 0px 0px var(--black);
+}
+
+/* Add corner marks to button pseudo elements if possible, staying simple for now */
+
+/* --- Footer --- */
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.footer-highlight {
+    background: var(--black);
+    color: var(--white);
+    padding: 2px 6px;
+    margin-left: 4px;
+}
+
+/* --- Helper Classes --- */
+.hidden {
+    display: none !important;
+}
+
+/* --- Dynamic Result Card Styling --- */
+.result-card {
+    background: var(--white);
+    border: var(--border-w) solid var(--black);
+    box-shadow: 8px 8px 0px var(--black);
+    margin-top: 24px;
+}
+
+.result-header {
+    background: var(--lime);
+    border-bottom: var(--border-w) solid var(--black);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.result-header h3 {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.result-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.result-actions {
+    margin-top: 20px;
+}
+
+/* --- Dynamic Result Card Styling (Stacked/Orange Theme) --- */
+.result-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.result-item {
+    background: var(--white);
+    border: var(--border-w) solid var(--black);
+    box-shadow: none;
+    overflow: hidden;
+    position: relative;
+}
+
+.result-header-dark {
+    background: var(--black);
+    color: var(--white);
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: var(--border-w) solid var(--black);
+}
+
+.result-type {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.success-badge {
+    background: #5B23FF;
+    color: var(--white);
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    font-weight: 800;
+    border: 1px solid var(--white);
+}
+
+.result-content {
+    padding: 16px;
+}
+
+.result-preview {
+    width: 100%;
+    margin-bottom: 16px;
+    border: var(--border-w) solid var(--black);
+    background: #000;
+}
+
+.result-preview video,
+.result-preview audio {
+    width: 100%;
+    display: block;
+}
+
+.result-details {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--black);
+    margin-bottom: 20px;
+    line-height: 1.4;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-top: 2px dashed #ccc;
+    padding-top: 12px;
+}
+
+.btn-orange {
+    display: block;
+    width: 100%;
+    background: var(--lime);
+    color: var(--black);
+    border: var(--border-w) solid var(--black);
+    padding: 14px;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1rem;
+    box-shadow: 4px 4px 0px var(--black);
+    transition: transform 0.1s;
+    font-family: var(--font-heading);
+}
+
+.btn-orange:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--black);
+    background: #B4E600;
+    /* Slightly darker lime for hover */
+}
+
+.btn-orange:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px var(--black);
+}
+
+/* Utilities */
+.features-section,
+.howto-section,
+.faq-section,
+.platforms-section,
+.hero,
+.bg-shapes {
+    /* Hide old sections */
+    display: none;
+}
